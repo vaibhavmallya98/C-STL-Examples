@@ -9,7 +9,7 @@ struct Student
 
     std::string name; 
 
-    int height; 
+    int age; 
 };
 
 int main(){
@@ -26,7 +26,7 @@ int main(){
 
     std::vector<Student>students = {{"Bob",35}, {"George",39}, {"Daniel",31}};
 
-    auto oldest = std::ranges::max_element(students, {}, &Student::height); 
+    auto oldest = std::ranges::max_element(students, {}, &Student::age); 
 
     std::cout<<"Oldest person is "<<oldest->name<<"\n"; 
 
