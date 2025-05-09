@@ -16,7 +16,7 @@ int main(){
 
     std::vector<std::pair<double,double>> coordinates = {{3.57,4.63}, {7.31,6.54}, {2.45, 3.21}}; 
     
-    //{} - signifies the default operator <
+    //{} - signifies the default operator < (less than) 
     auto largestL2Norm = std::ranges::max_element(coordinates, {}, l2Norm);
 
     std::cout<<"Coordinate with the largest L2 Norm is ("<<largestL2Norm->first<<", "<<largestL2Norm->second<<"). "; 
