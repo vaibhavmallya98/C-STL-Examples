@@ -2,6 +2,17 @@
 #include<iostream>
 #include<algorithm>
 #include<ranges> 
+#include <utility>
+#include<string> 
+#include <cctype>
+#include <iomanip>
+#include<numeric> 
+
+char to_uppercase(unsigned char c)
+{
+    return std::toupper(c);
+}
+
 
 
 int main(){
@@ -13,11 +24,13 @@ int main(){
     std::transform(v.begin(), v.end(), result1.begin(), [](int x) {
         return x * x;
     });
+    
+    std::cout<<"\nUnary operation result: ";
 
     for (int x : result1)
         std::cout << x << " ";
 
-    std::cout<<"\n";
+    //std::cout<<"\n";
 
 
 
@@ -30,6 +43,8 @@ int main(){
         return x + y;
     });
 
+    std::cout<<"\nBinary operation result: ";
+    
     for (int x : result2)
         std::cout << x << " ";
 
@@ -41,10 +56,11 @@ int main(){
     //evenSquared is a view,  we can use any containers that use iterators 
     auto evenSquared = vec | std::views::filter([](int x){return x % 2 == 0; }) | std::views::transform([](int x){return x * x; });
     
+    std::cout<<"\nFilter and transform result: "; 
     for(auto n: evenSquared){
         std::cout<<n<<" "; 
     }
-    std::cout<<"\n"; 
+    //std::cout<<"\n"; 
 
 
 
@@ -57,9 +73,16 @@ int main(){
                [](const std::string& s) { return s.length(); });
 
 
+    std::cout<<"\nBack inserter result: "; 
     for(auto l: lengths){
         std::cout<<l<<" "; 
     }
-    std::cout<<"\n"; 
+    //std::cout<<"\n"; 
+    
+    //Example 5 - transform using your own function 
+    
+    std::string st1 = "sample";
+    std::transform(st1.cbegin(), st1.cend(), st1.begin(), to_uppercase); 
+    std::cout << "\nst1 as uppercase = " << std::quoted(st1); 
 
 }
