@@ -13,6 +13,9 @@ char to_uppercase(unsigned char c)
     return std::toupper(c);
 }
 
+int squared(int x){
+    return x*x; 
+}
 
 
 int main(){
@@ -83,6 +86,15 @@ int main(){
     
     std::string st1 = "sample";
     std::transform(st1.cbegin(), st1.cend(), st1.begin(), to_uppercase); 
-    std::cout << "\nst1 as uppercase = " << std::quoted(st1); 
+    std::cout << "\nst1 as uppercase = " << std::quoted(st1);
+
+    //Example 6 - transform vector using your own function
+    std::vector<int> vec1 = {1, 3, 3, 5, 7, 9};
+    
+    std::transform(vec1.begin(),vec1.end(),vec1.begin(),squared);
+    
+    for(auto n: vec1){
+        std::cout<<n<<" "; 
+    }
 
 }
