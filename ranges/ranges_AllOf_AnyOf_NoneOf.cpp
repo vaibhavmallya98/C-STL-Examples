@@ -15,6 +15,17 @@ int main() {
     // Check if none of the elements are negative
     bool none_negative = std::ranges::none_of(numbers, [](int x) { return x < 0; });
 
+    auto DivisibleBy = [](int d)
+    {
+        return [d](int m) { return m % d == 0; };
+    };
+ 
+    if (ranges::any_of(numbers, DivisibleBy(7)))
+        std::cout << "At least one number is divisible by 7\n";
+    else{
+        std::cout << "None of the numbers in the vector are divisible by 7\n"; 
+    }
+
     std::cout << std::boolalpha;
     std::cout << "All positive? " << all_positive << "\n";    // true
     std::cout << "Any even? "     << any_even     << "\n";    // true
